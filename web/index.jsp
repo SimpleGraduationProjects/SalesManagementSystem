@@ -2,9 +2,9 @@
 <jsp:forward page="${pageContext.request.contextPath }/index.html"/>
 <html>
 <head>
-    <title>欢迎来到房屋租赁网</title>
+    <title></title>
 </head>
 <body>
-<h1>欢迎来到房屋租赁网</h1>
+<h1></h1>
 </body>
 </html>
