@@ -4,81 +4,83 @@
 
     <select id="findGoodsPage" resultType="java.util.Map" parameterType="java.util.Map">
 
-        select ID As id,
-            NAME As name,
-            CODE As code,
-            TYPE As type,
-            SPECIFICATION As specification,
-            PRODUCTION_DATE As productionDate,
-            SHELF_LIFE As shelfLife,
-            UNIT As unit,
-            PRICE As price,
-            NOTE As note
+        select ID            As                                  id,
+               NAME          As                                  name,
+               CODE          As                                  code,
+               TYPE          As                                  type,
+               SPECIFICATION As                                  specification,
+               DATE_FORMAT(PRODUCTION_DATE, '%Y-%m-%d %H:%I:%S') productionDate,
+               SHELF_LIFE    As                                  shelfLife,
+               UNIT          As                                  unit,
+               PRICE         As                                  price,
+               NOTE          As                                  note
         from tb_goods
-        limit #{begin},  #{pageSize}
+        limit #{begin}, #{pageSize}
     </select>
 
     <select id="findGoodsPageCount" resultType="java.lang.Integer" parameterType="java.util.Map">
-        select count(*)  from tb_goods
-    </select>
-
-
-    <select id="findById" resultType="com.storems.admin.entity.Goods" >
-
-        select ID As id,
-             NAME As name,
-            CODE As code,
-            TYPE As type,
-            SPECIFICATION As specification,
-            PRODUCTION_DATE As productionDate,
-            SHELF_LIFE As shelfLife,
-            UNIT As unit,
-            PRICE As price,
-            NOTE As note
+        select count(*)
         from tb_goods
-        where id=#{id}
     </select>
 
-    <insert id="save" parameterType="com.storems.admin.entity.Goods" >
-        INSERT INTO tb_goods (ID,NAME,CODE,TYPE,SPECIFICATION,PRODUCTION_DATE,SHELF_LIFE,UNIT,PRICE,NOTE)
-        VALUES (#{id},#{name},#{code},#{type},#{specification},#{productionDate}, #{shelfLife},#{unit},#{price},#{note})
+
+    <select id="findById" resultType="com.storems.admin.entity.Goods">
+
+        select ID              As id,
+               NAME            As name,
+               CODE            As code,
+               TYPE            As type,
+               SPECIFICATION   As specification,
+               PRODUCTION_DATE As productionDate,
+               SHELF_LIFE      As shelfLife,
+               UNIT            As unit,
+               PRICE           As price,
+               NOTE            As note
+        from tb_goods
+        where id = #{id}
+    </select>
+
+    <insert id="save" parameterType="com.storems.admin.entity.Goods">
+        INSERT INTO tb_goods (ID, NAME, CODE, TYPE, SPECIFICATION, PRODUCTION_DATE, SHELF_LIFE, UNIT, PRICE, NOTE)
+        VALUES (#{id}, #{name}, #{code}, #{type}, #{specification}, #{productionDate}, #{shelfLife}, #{unit}, #{price},
+                #{note})
     </insert>
 
 
-    <update id="update" parameterType="com.storems.admin.entity.Goods" >
-       UPDATE tb_goods
-        SET
-            NAME =#{name},
-            CODE =#{code},
-            TYPE =#{type},
-            SPECIFICATION =#{specification},
+    <update id="update" parameterType="com.storems.admin.entity.Goods">
+        UPDATE tb_goods
+        SET NAME            =#{name},
+            CODE            =#{code},
+            TYPE            =#{type},
+            SPECIFICATION   =#{specification},
             PRODUCTION_DATE =#{productionDate},
-            SHELF_LIFE =#{shelfLife},
-            UNIT =#{unit},
-            PRICE =#{price},
-            NOTE =#{note}
-             WHERE ID = #{id}
+            SHELF_LIFE      =#{shelfLife},
+            UNIT            =#{unit},
+            PRICE           =#{price},
+            NOTE            =#{note}
+        WHERE ID = #{id}
 
-        </update>
+    </update>
 
-    <delete id="batchDelete" >
-        DELETE FROM tb_goods WHERE ID = #{id}
+    <delete id="batchDelete">
+        DELETE
+        FROM tb_goods
+        WHERE ID = #{id}
     </delete>
 
 
+    <select id="findAll" resultType="com.storems.admin.entity.Goods">
 
-    <select id="findAll" resultType="com.storems.admin.entity.Goods" >
-
-        select ID As id,
-             NAME As name,
-            CODE As code,
-            TYPE As type,
-            SPECIFICATION As specification,
-            PRODUCTION_DATE As productionDate,
-            SHELF_LIFE As shelfLife,
-            UNIT As unit,
-            PRICE As price,
-            NOTE As note
+        select ID              As id,
+               NAME            As name,
+               CODE            As code,
+               TYPE            As type,
+               SPECIFICATION   As specification,
+               PRODUCTION_DATE As productionDate,
+               SHELF_LIFE      As shelfLife,
+               UNIT            As unit,
+               PRICE           As price,
+               NOTE            As note
         from tb_goods
     </select>
 </mapper>

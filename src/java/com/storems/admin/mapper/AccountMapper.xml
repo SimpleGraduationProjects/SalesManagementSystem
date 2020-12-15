@@ -25,6 +25,8 @@
     </select>
 
 
+
+
     <select id="findAccountPage" resultType="java.util.Map" parameterType="java.util.Map">
 
         select ID As id,
@@ -32,7 +34,7 @@
             PASSWORD As password,
             REAL_NAME As realName,
             LINK_PHONE As linkPhone,
-            REG_DATE As regDate,
+            DATE_FORMAT(REG_DATE, '%Y-%m-%d %H:%I:%S') regDate,
             SEX As sex,
             AGE As age,
             ADDRESS As address,
