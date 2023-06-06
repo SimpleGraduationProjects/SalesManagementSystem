@@ -13,7 +13,7 @@
 	
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource"
 		p:driverClassName="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://localhost:3306/ssm_storedb?characterEncoding=utf-8"
+		p:url="jdbc:mysql://localhost:3306/graduation_2_ssm_storedb?characterEncoding=utf-8"
 		p:username="root"
 		p:password="123456"
 	/>
